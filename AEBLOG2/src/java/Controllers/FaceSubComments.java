@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.SubCommentDAO;
 import Pojos.SubComment;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import javax.faces.bean.ManagedBean;
  * @author alexf
  */
 @ManagedBean(name = "faceSubComments")
-public class FaceSubComments {
+public class FaceSubComments  implements Serializable{
 
     SubComment subcomment;
     SubCommentDAO subcommentdao;

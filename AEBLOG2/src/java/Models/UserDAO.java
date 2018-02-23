@@ -27,13 +27,13 @@ public class UserDAO extends DBconnection{
         }
     }
     
-        public User Login(String email, String pass) throws  ClassNotFoundException, SQLException{
+        public User Login(User user) throws  ClassNotFoundException, SQLException{
         User usuario= new User(0);
         Conectar();
         sql="select * from user where email=? and password=? limit 1";
         estado= con.prepareStatement(sql);
-        estado.setString(1, email);
-        estado.setString(2, pass);
+        estado.setString(1, user.getEmail());
+        estado.setString(2, user.getPassword());
         rs= estado.executeQuery();
         try {
             while(rs.next())

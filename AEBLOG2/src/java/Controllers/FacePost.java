@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.PostDAO;
 import Pojos.Post;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import javax.inject.Named;
  * @author alexf
  */
 @Named("facePost")
-public class FacePost {
+public class FacePost  implements Serializable{
 
     Post post;
     PostDAO postdao;

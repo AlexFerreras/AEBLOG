@@ -1,8 +1,8 @@
-
 package Controllers;
 
 import Models.CommentsDAO;
 import Pojos.Comment;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import javax.faces.bean.ManagedBean;
  * @author alexf
  */
 @ManagedBean(name = "faceComments")
-public class FaceComments {
+public class FaceComments implements Serializable{
     Comment comment;
     CommentsDAO commentdao;
 
