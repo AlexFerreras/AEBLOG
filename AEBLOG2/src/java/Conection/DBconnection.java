@@ -29,11 +29,11 @@ public class DBconnection {
     public DBconnection() {
     }
 
-    public String Conectar() throws SQLException, ClassNotFoundException {
+    public void Conectar() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         String url = "jdbc:mysql://" + host + "/" + db + "?user=" + user + "&password=" + password;
         con = DriverManager.getConnection(url);
-        return "funcino";
+     
     }
 
     public void Desconectar() throws SQLException {
