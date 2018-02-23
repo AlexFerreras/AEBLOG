@@ -3,15 +3,16 @@ package Controllers;
 
 import Models.CommentsDAO;
 import Pojos.Comment;
-import Pojos.Post;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author alexf
  */
+@ManagedBean(name = "faceComments")
 public class FaceComments {
     Comment comment;
     CommentsDAO commentdao;
@@ -37,8 +38,6 @@ public class FaceComments {
     }
     
     
-    
-    
     public Comment getComment() {
         return comment;
     }
@@ -55,5 +54,38 @@ public class FaceComments {
         this.commentdao = commentdao;
     }
     
-    
+     public void saveComment() {
+
+        try {
+            commentdao.saveComment(this.comment);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            this.comment = new Comment();
+        }
+
+    }
+     
+     
+      public void deleteComment(){
+    try {commentdao.deleteComment(this.comment.getId());
+    }catch(SQLException e){
+     System.out.println(e.getMessage());
+            e.printStackTrace();
+    }finally{
+        System.err.println("se elimino el post");
+    }
+    }
+     
+     public void updateComment() {
+
+        try {
+            commentdao.updateComent(this.comment);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            this.comment = new Comment();
+        }
+
+    }
 }

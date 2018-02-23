@@ -5,13 +5,13 @@ import Pojos.Post;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
 /**
  *
  * @author alexf
  */
-@ManagedBean(name = "facePost")
+@Named("facePost")
 public class FacePost {
 
     Post post;
@@ -56,9 +56,8 @@ public class FacePost {
 
         try {
             postdao.savePost(this.post);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         } finally {
             this.post = new Post();
         }
@@ -67,9 +66,8 @@ public class FacePost {
 
     public void deletePost(){
     try {postdao.deletePost(this.post.getId());
-    }catch(Exception e){
+    }catch(SQLException e){
      System.out.println(e.getMessage());
-            e.printStackTrace();
     }finally{
         System.err.println("se elimino el post");
     }
@@ -79,9 +77,8 @@ public class FacePost {
 
         try {
             postdao.updatePost(this.post);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         } finally {
             this.post = new Post();
         }

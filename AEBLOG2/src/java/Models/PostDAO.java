@@ -19,7 +19,7 @@ public class PostDAO extends DBconnection {
             estado.setString(3, p.getContent());
             estado.setString(4, fecha);
             estado.execute();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
             
@@ -41,7 +41,7 @@ public class PostDAO extends DBconnection {
                 List.add(p);
 
             }
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
             Desconectar();
@@ -59,7 +59,7 @@ public class PostDAO extends DBconnection {
         estado.setInt(1, id);
         estado.execute();
         
-        }catch(Exception e){
+        }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }finally {
             Desconectar();
@@ -76,7 +76,7 @@ public class PostDAO extends DBconnection {
             estado.setString(2, p.getContent());
             estado.setString(3, fecha);
             estado.execute();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
             Desconectar();

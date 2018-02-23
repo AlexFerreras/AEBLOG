@@ -23,7 +23,7 @@ public class SubCommentDAO extends DBconnection{
             estado.setString(3, s.getContent());
             estado.setString(4, fecha);
             estado.execute();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
             
@@ -63,7 +63,7 @@ public class SubCommentDAO extends DBconnection{
         estado.setInt(1, id);
         estado.execute();
         
-        }catch(Exception e){
+        }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }finally {
             Desconectar();
@@ -79,7 +79,7 @@ public class SubCommentDAO extends DBconnection{
             estado.setString(2, c.getContent());
             estado.setString(3, fecha);
             estado.execute();
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
             Desconectar();

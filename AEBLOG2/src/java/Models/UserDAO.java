@@ -20,7 +20,7 @@ public class UserDAO extends DBconnection{
     estado.setString(5, user.getPassword());
     estado.execute();
     
-        }catch(Exception e){
+        }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }finally{    
             Desconectar();
