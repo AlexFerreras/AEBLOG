@@ -10,31 +10,31 @@ import java.util.Date;
  */
 public class Comment {
     private int id;
-    private int postId;
-    private int userId;
+    private int articles_id;
+    private int user_Id;
     private String content;
     Date date= new Date();
     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    String fecha; 
+    String creation_date; 
 
     public Comment() {
-        this.fecha= dateFormat.format(date);
+        this.creation_date= dateFormat.format(date);
     }
 
     public Comment(int id, int postId, int userId, String content) {
         this.id = id;
-        this.postId = postId;
-        this.userId = userId;
+        this.articles_id = postId;
+        this.user_Id = userId;
         this.content = content;
-        this.fecha = this.fecha= dateFormat.format(date);
+        this.creation_date = this.creation_date= dateFormat.format(date);
     }
 
-    public Comment(int id, int postId, int userId, String content, String fecha) {
+    public Comment(int id, int postId, int userId, String content, String creation_date) {
         this.id = id;
-        this.postId = postId;
-        this.userId = userId;
+        this.articles_id = postId;
+        this.user_Id = userId;
         this.content = content;
-        this.fecha = fecha;
+        this.creation_date = creation_date;
     }
 
     
@@ -47,19 +47,19 @@ public class Comment {
     }
 
     public int getPostId() {
-        return postId;
+        return articles_id;
     }
 
     public void setPostId(int postId) {
-        this.postId = postId;
+        this.articles_id = postId;
     }
 
     public int getUserId() {
-        return userId;
+        return user_Id;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.user_Id = userId;
     }
 
     public String getContent() {
@@ -71,7 +71,7 @@ public class Comment {
     }
 
     public String getFecha() {
-        return fecha;
+        return creation_date;
     }
     
     

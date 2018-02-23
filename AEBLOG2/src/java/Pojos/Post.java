@@ -6,31 +6,31 @@ import java.util.Date;
 
 public class Post {
      private int id;
-     private int userId;
-     private String topic;
-     private String content;
+     private int user_Id;
+     private String content;          
      Date date= new Date();
      DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-     private String fecha; 
+     private String creation_date; 
+     private String topic;
 
     public Post() {
-        this.fecha= dateFormat.format(date);
+        this.creation_date= dateFormat.format(date);
     }
 
     public Post(int id, int userId, String topic, String content) {
         this.id = id;
-        this.userId = userId;
+        this.user_Id = userId;
         this.topic = topic;
         this.content = content;
-        this.fecha = dateFormat.format(date);
+        this.creation_date = dateFormat.format(date);
     }
 
-    public Post(int id, int userId, String topic, String content, String fecha) {
+    public Post(int id, int userId, String topic, String content, String creation_date) {
         this.id = id;
-        this.userId = userId;
+        this.user_Id = userId;
         this.topic = topic;
         this.content = content;
-        this.fecha = fecha;
+        this.creation_date = creation_date;
     }
 
     
@@ -40,7 +40,7 @@ public class Post {
     }
 
     public String getFecha() {
-        return fecha;
+        return creation_date;
     }
 
     public void setId(int id) {
@@ -48,11 +48,11 @@ public class Post {
     }
 
     public int getUserId() {
-        return userId;
+        return user_Id;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.user_Id = userId;
     }
 
     public String getContent() {
