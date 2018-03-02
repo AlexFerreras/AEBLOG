@@ -24,19 +24,19 @@ and open the template in the editor.
         <b:container>
             <h:form styleClass="form-signin" prependId="false" >
                 <h2 Class="form-signin-heading">Ingresa tus datos</h2>
-                <b:inputText id ="username" placeholder="Usuario" value="">
+                <b:inputText id ="username" placeholder="Usuario" value="#{genFace.user.email}">
                     <f:facet name="prepend">
                         <b:icon name ="user" />                        
                     </f:facet>
                 </b:inputText>
                 
-                <b:inputText id="password" placeholder="Password" type="password" value="">
+                <b:inputText id="password" placeholder="Password" type="password" value="#{genFace.user.password}">
                     <f:facet name="prepend">
                              <b:iconAwesome name="key"/>    
                     </f:facet>         
                 </b:inputText>
                 <b:selectBooleanCheckbox value="true" caption="remember me"/>
-                <b:commandButton look="primary btn-block" value="login" icon="log-in" action="#{faceSubComments.saveSubComment()}"/>                                      
+                <b:commandButton look="primary btn-block" value="login" icon="log-in" action="#{genFace.login()}"/>                                      
             </h:form>
         </b:container>
     </h:body>

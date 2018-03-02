@@ -21,13 +21,8 @@ public class GenericFace  implements Serializable{
     @ManagedProperty(value="#{facePost}")
     private FacePost facepost;
 
-    @ManagedProperty(value="#{faceComments}")
-    private FaceComments facecomments;
-    
-    @ManagedProperty(value="#{faceSubComments}")
-    private FaceSubComments facesubcomments;
-    
     User user;
+    User loginOn;
     User newuser;
     UserDAO userdao;
     
@@ -56,21 +51,10 @@ public class GenericFace  implements Serializable{
         this.facepost = facepost;
     }
 
-    public FaceComments getFacecomments() {
-        return facecomments;
-    }
 
-    public void setFacecomments(FaceComments facecomments) {
-        this.facecomments = facecomments;
-    }
 
-    public FaceSubComments getFacesubcomments() {
-        return facesubcomments;
-    }
+ 
 
-    public void setFacesubcomments(FaceSubComments facesubcomments) {
-        this.facesubcomments = facesubcomments;
-    }
     @SuppressWarnings("empty-statement")
     public void newUser(){
         try {
@@ -85,11 +69,11 @@ public class GenericFace  implements Serializable{
     public void login(){
     
         try {
-            userdao.Login(this.user);
+             this.loginOn = userdao.Login(this.user);
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error al tratar de loguiarse "+ ex.getMessage());
         }finally{
-        //lo que queremos que haga despues que se loguee
+            System.out.print(loginOn);
         
         }
     
