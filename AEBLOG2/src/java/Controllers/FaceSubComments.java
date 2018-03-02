@@ -15,11 +15,9 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name = "faceSubComments")
 public class FaceSubComments  implements Serializable{
 
-    SubComment subcomment;
-    SubCommentDAO subcommentdao;
+    SubComment subcomment =new SubComment();
+    SubCommentDAO subcommentdao= new SubCommentDAO();
     List<SubComment> allsubcomments = new ArrayList<>();
-
-   
 
     public SubComment getSubcomment() {
         return subcomment;

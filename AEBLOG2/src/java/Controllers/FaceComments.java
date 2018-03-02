@@ -13,13 +13,11 @@ import javax.faces.bean.ManagedBean;
  * @author alexf
  */
 @ManagedBean(name = "faceComments")
-public class FaceComments implements Serializable{
-    Comment comment;
-    CommentsDAO commentdao;
+public class FaceComments implements Serializable {
 
+    Comment comment = new Comment();
+    CommentsDAO commentdao = new CommentsDAO();
     List<Comment> allcomments = new ArrayList<>();
-
-
 
     public List<Comment> getAllcomments() {
         return allcomments;
@@ -28,8 +26,7 @@ public class FaceComments implements Serializable{
     public void setAllcomments(List<Comment> allcomments) {
         this.allcomments = allcomments;
     }
-    
-    
+
     public Comment getComment() {
         return comment;
     }
@@ -45,8 +42,8 @@ public class FaceComments implements Serializable{
     public void setCommentdao(CommentsDAO commentdao) {
         this.commentdao = commentdao;
     }
-    
-     public void saveComment() {
+
+    public void saveComment() {
 
         try {
             commentdao.saveComment(this.comment);
@@ -57,19 +54,19 @@ public class FaceComments implements Serializable{
         }
 
     }
-     
-     
-      public void deleteComment(){
-    try {commentdao.deleteComment(this.comment.getId());
-    }catch(SQLException e){
-     System.out.println(e.getMessage());
+
+    public void deleteComment() {
+        try {
+            commentdao.deleteComment(this.comment.getId());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
-    }finally{
-        System.err.println("se elimino el post");
+        } finally {
+            System.err.println("se elimino el post");
+        }
     }
-    }
-     
-     public void updateComment() {
+
+    public void updateComment() {
 
         try {
             commentdao.updateComent(this.comment);

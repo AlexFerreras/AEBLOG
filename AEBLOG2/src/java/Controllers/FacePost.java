@@ -15,8 +15,8 @@ import javax.inject.Named;
 @Named("facePost")
 public class FacePost  implements Serializable{
 
-    Post post;
-    PostDAO postdao;
+    Post post=new Post();
+    PostDAO postdao=new PostDAO();
     List<Post> allpost = new ArrayList<>();
 
     public List<Post> getAllpost() {
