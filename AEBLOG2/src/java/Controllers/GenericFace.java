@@ -1,11 +1,8 @@
 package Controllers;
 
-import Models.UserDAO;
-import Pojos.User;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -16,31 +13,49 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean(name = "genFace")
 @RequestScoped
-public class GenericFace  implements Serializable{
-    
-    @ManagedProperty(value="#{facePost}")
+public class GenericFace implements Serializable {
+
+    @ManagedProperty(value = "#{faceUser}")
+    private FaceUser faceuser;
+
+    @ManagedProperty(value = "#{facePost}")
     private FacePost facepost;
 
-    User user = new User();
-    User loginOn = new User();
-    User newuser = new User();
-    UserDAO userdao = new UserDAO();
+    @ManagedProperty(value = "#{faceComments}")
+    private FaceComments facecomments;
+
+    @ManagedProperty(value = "#{faceSubComments}")
+    private FaceSubComments facesubcomments;
     
+    public GenericFace() {
+        this.faceuser =new FaceUser(); 
+        this.facepost=new FacePost();
+        this.facecomments=new FaceComments();
+        this.facesubcomments=new FaceSubComments();
+    }
     
-    public User getUser() {
-        return user;
+    public FaceUser getFaceuser() {
+        return faceuser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setFaceuser(FaceUser faceuser) {
+        this.faceuser = faceuser;
     }
 
-    public UserDAO getUserdao() {
-        return userdao;
+    public FaceComments getFacecomments() {
+        return facecomments;
     }
 
-    public void setUserdao(UserDAO userdao) {
-        this.userdao = userdao;
+    public void setFacecomments(FaceComments facecomments) {
+        this.facecomments = facecomments;
+    }
+
+    public FaceSubComments getFacesubcomments() {
+        return facesubcomments;
+    }
+
+    public void setFacesubcomments(FaceSubComments facesubcomments) {
+        this.facesubcomments = facesubcomments;
     }
 
     public FacePost getFacepost() {
@@ -50,36 +65,27 @@ public class GenericFace  implements Serializable{
     public void setFacepost(FacePost facepost) {
         this.facepost = facepost;
     }
-
-
-
- 
-
-    @SuppressWarnings("empty-statement")
-    public void newUser(){
+    
+    @PostConstruct
+    public void CargarTodo() {
         try {
-            userdao.newUser(this.newuser);
+            //cargar todo los Posts
+            facepost.allpost = facepost.postdao.findPosts();
+
+            //cargando todos los comentario       
+            facecomments.allcomments
+                    = facecomments.commentdao
+                            .findComents(facepost.post.getId());
+
+            //encntrando todos los subs comentarios que estan dentro de los comentarios
+            facesubcomments.allsubcomments
+                    = facesubcomments.subcommentdao
+                            .findSubComents(facecomments.comment.getId());
+
         } catch (SQLException ex) {
-            System.out.println( "Error al tratar de crear nuevo usuario"+ex.getMessage());
-        }finally{
-        //lo que quiero que haga despues que se registre
+            System.out.println("Error al cargar una de las listas en el GenericoBeans"+ex.getMessage());
         }
+
     }
-    
-    public void login(){
-    
-        try {
-             this.loginOn = userdao.Login(this.user);
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("Error al tratar de loguiarse "+ ex.getMessage());
-        }finally{
-            System.out.print(loginOn.getId());
-        
-        }
-    
-    }
-    
-    
-    
-    
+
 }

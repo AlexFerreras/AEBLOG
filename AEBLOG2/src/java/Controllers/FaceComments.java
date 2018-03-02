@@ -19,15 +19,7 @@ public class FaceComments implements Serializable{
 
     List<Comment> allcomments = new ArrayList<>();
 
-    public FaceComments() {
-   
-        try {
-            allcomments= commentdao.findComents();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-    }
+
 
     public List<Comment> getAllcomments() {
         return allcomments;

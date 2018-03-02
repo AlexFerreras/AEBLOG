@@ -83,7 +83,29 @@ public class PostDAO extends DBconnection {
         }
     }
     
-    
+    public List<Post> findUserPosts(int UserId) throws SQLException {
+        ArrayList<Post> List = new ArrayList<>();
+        try {
+            Conectar();
+            sql = "select * from post where user_id=?";
+            estado = con.prepareStatement(sql);
+            estado.setInt(1, UserId);
+            rs = estado.executeQuery();
+
+            while (rs.next()) {
+
+                Post p = new Post(rs.getInt("id"), rs.getInt("userid"), rs.getString("topic"), rs.getString("content"), rs.getString("fecha"));
+                List.add(p);
+
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            Desconectar();
+           
+        }
+        return List;
+    } 
     
     
 }

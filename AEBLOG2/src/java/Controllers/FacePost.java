@@ -19,15 +19,6 @@ public class FacePost  implements Serializable{
     PostDAO postdao;
     List<Post> allpost = new ArrayList<>();
 
-    public FacePost() {
-        
-        try {
-            allpost= postdao.findPosts();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
     public List<Post> getAllpost() {
         return allpost;
     }

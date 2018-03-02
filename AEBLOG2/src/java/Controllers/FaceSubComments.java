@@ -19,15 +19,7 @@ public class FaceSubComments  implements Serializable{
     SubCommentDAO subcommentdao;
     List<SubComment> allsubcomments = new ArrayList<>();
 
-    public FaceSubComments() {
-
-        try {
-            allsubcomments = subcommentdao.findSubComents();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-    }
+   
 
     public SubComment getSubcomment() {
         return subcomment;

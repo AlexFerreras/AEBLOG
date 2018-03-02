@@ -31,12 +31,13 @@ public class SubCommentDAO extends DBconnection{
         }
     }
 
-    public List<SubComment> findSubComents() throws SQLException {
+    public List<SubComment> findSubComents(int CommentId) throws SQLException {
         ArrayList<SubComment> List = new ArrayList<>();
         try {
             Conectar();
-            sql = "select * from subComment";
+            sql = "select * from subComment where Comments_id=?";
             estado = con.prepareStatement(sql);
+            estado.setInt(1, CommentId);
             rs = estado.executeQuery();
 
             while (rs.next()) {
