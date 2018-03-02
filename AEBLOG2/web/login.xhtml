@@ -35,36 +35,7 @@ and open the template in the editor.
                         <b:commandButton look="primary btn-block" value="Sign In" icon="log-in" size="lg" action="#{genFace.login()}"/>
                     </h:form>
                 </b:container>
-=======
-       xmlns:b="http://bootsfaces.net/ui">
-    <head>
-        <title>Login Page</title>
-        <style type="text/css">
-            .form-signin{
-                margin: 0 auto;
-                max-width: 330px;
-                padding: 15px;
-            }
-        </style>
-    </head>
-    <h:body style ="padding-top: 60px; background-color: darkslategray;">
-        <b:container>
-            <h:form styleClass="form-signin" prependId="false" >
-                <h2 Class="form-signin-heading">Ingresa tus datos</h2>
-                <b:inputText id ="username" placeholder="Usuario" value="#{genFace.user.email}">
-                    <f:facet name="prepend">
-                        <b:icon name ="user" />                        
-                    </f:facet>
-                </b:inputText>
-                
-                <b:inputText id="password" placeholder="Password" type="password" value="#{genFace.user.password}">
-                    <f:facet name="prepend">
-                             <b:iconAwesome name="key"/>    
-                    </f:facet>         
-                </b:inputText>
-                <b:selectBooleanCheckbox value="true" caption="remember me"/>
-                <b:commandButton look="primary btn-block" value="login" icon="log-in" action="#{genFace.login()}"/>                                      
->>>>>>> master
+
             </h:form>
         </ui:define>
 
