@@ -5,6 +5,7 @@ import Pojos.User;
 import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -12,14 +13,14 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "faceUser")
 @SessionScoped
-
 public class FaceUser {
-
+ 
     User user = new User();
     User loginOn = new User();
     User new_user = new User();
     UserDAO userdao = new UserDAO();
-
+FacesContext context = 
+                    FacesContext.getCurrentInstance();
     public User getLoginOn() {
         return loginOn;
     }
@@ -60,7 +61,7 @@ public class FaceUser {
         } catch (SQLException ex) {
             System.out.println("Error al tratar de crear nuevo usuario" + ex.getMessage());
         } finally {
-            //lo que quiero que haga despues que se registre
+            this.new_user= new User();
         }
     }
 
@@ -68,6 +69,12 @@ public class FaceUser {
 
         try {
             this.loginOn = userdao.Login(this.user);
+            
+            if(this.loginOn.getId() > 0 ){
+           
+            context.getExternalContext()
+            .getSessionMap().put("userLogOn", this.loginOn);
+            }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error al tratar de loguiarse " + ex.getMessage());
         } finally {
@@ -75,5 +82,14 @@ public class FaceUser {
             //lo que queremos que haga despues que se loguee
         }
 
+    }
+    
+    
+    public void logOut(){
+        //cerrar la sesion activa
+        
+    FacesContext.getCurrentInstance()
+            .getExternalContext().invalidateSession();
+    
     }
 }

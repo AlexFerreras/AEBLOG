@@ -11,7 +11,7 @@ public class PostDAO extends DBconnection {
     public void savePost(Post p) throws SQLException {
         try {
             Conectar();
-            sql = "insert into post(userid,topic, content, fecha) values(?,?,?,?)";
+            sql = "insert into post(userid, topic, content, fecha) values(?,?,?,?)";
             estado = con.prepareStatement(sql);
 
             estado.setInt(1, p.getUserId());

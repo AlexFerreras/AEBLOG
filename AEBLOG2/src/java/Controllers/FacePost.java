@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.PostDAO;
 import Pojos.Post;
+import Pojos.User;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class FacePost  implements Serializable{
     Post post=new Post();
     PostDAO postdao=new PostDAO();
     List<Post> allpost = new ArrayList<>();
+    
 
     public List<Post> getAllpost() {
         return allpost;
@@ -47,6 +49,9 @@ public class FacePost  implements Serializable{
     public void savePost() {
 
         try {
+            
+             //neseito el id del user que la guardo...
+            
             postdao.savePost(this.post);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

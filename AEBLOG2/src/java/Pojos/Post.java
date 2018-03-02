@@ -7,11 +7,13 @@ import java.util.Date;
 public class Post {
      private int id;
      private int user_Id;
-     private String content;          
+     private String topic;
+     private String content; 
+     private String creation_date; 
      Date date= new Date();
      DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-     private String creation_date; 
-     private String topic;
+    
+     
 
     public Post() {
         this.creation_date= dateFormat.format(date);
