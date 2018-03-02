@@ -84,6 +84,8 @@ public class GenericFace implements Serializable {
 
         } catch (SQLException ex) {
             System.out.println("Error al cargar una de las listas en el GenericoBeans"+ex.getMessage());
+        }finally{
+            System.out.println("Todas las listas Cargadas");
         }
 
     }
