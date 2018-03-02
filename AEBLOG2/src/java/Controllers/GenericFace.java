@@ -21,10 +21,10 @@ public class GenericFace  implements Serializable{
     @ManagedProperty(value="#{facePost}")
     private FacePost facepost;
 
-    User user;
-    User loginOn;
-    User newuser;
-    UserDAO userdao;
+    User user = new User();
+    User loginOn = new User();
+    User newuser = new User();
+    UserDAO userdao = new UserDAO();
     
     
     public User getUser() {
@@ -73,7 +73,7 @@ public class GenericFace  implements Serializable{
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error al tratar de loguiarse "+ ex.getMessage());
         }finally{
-            System.out.print(loginOn);
+            System.out.print(loginOn.getId());
         
         }
     

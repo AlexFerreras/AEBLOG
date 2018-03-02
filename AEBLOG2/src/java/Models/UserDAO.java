@@ -11,7 +11,7 @@ public class UserDAO extends DBconnection{
     {
         try{
     Conectar();
-    sql="insert into user (name, nickname,lastname, email, password)"+"values (?, ?, ?, ?, ?)";
+    sql="insert into user (name, username,las_tname, email, password)"+"values (?, ?, ?, ?, ?)";
     estado= con.prepareStatement(sql);
     estado.setString(1, user.getName());
     estado.setString(2, user.getNickname());
@@ -40,8 +40,8 @@ public class UserDAO extends DBconnection{
             {
                 usuario.setId(rs.getInt("id"));
                 usuario.setName(rs.getString("name"));
-                usuario.setLastname(rs.getString("lastname"));
-                usuario.setNickname(rs.getString("nickname"));
+                usuario.setLastname(rs.getString("last_name"));
+                usuario.setNickname(rs.getString("username"));
                 usuario.setEmail(rs.getString("email"));
             }
             Desconectar();
