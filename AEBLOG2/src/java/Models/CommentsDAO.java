@@ -30,12 +30,13 @@ public class CommentsDAO extends DBconnection{
         }
     }
 
-    public List<Comment> findComents() throws SQLException {
+    public List<Comment> findComents(int post_id) throws SQLException {
         ArrayList<Comment> List = new ArrayList<>();
         try {
             Conectar();
-            sql = "select * from comment";
+            sql = "select * from comments where article_id=? ";
             estado = con.prepareStatement(sql);
+            estado.setInt(1, post_id);
             rs = estado.executeQuery();
 
             while (rs.next()) {
