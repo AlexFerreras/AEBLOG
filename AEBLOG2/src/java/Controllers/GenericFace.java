@@ -16,7 +16,7 @@ import javax.faces.bean.RequestScoped;
 public class GenericFace implements Serializable {
 
     @ManagedProperty(value = "#{faceUser}")
-    private FaceUser faceuser;
+    private FaceUser faceuser; 
 
     @ManagedProperty(value = "#{facePost}")
     private FacePost facepost;
@@ -25,14 +25,7 @@ public class GenericFace implements Serializable {
     private FaceComments facecomments;
 
     @ManagedProperty(value = "#{faceSubComments}")
-    private FaceSubComments facesubcomments;
-    
-    public GenericFace() {
-        this.faceuser =new FaceUser(); 
-        this.facepost=new FacePost();
-        this.facecomments=new FaceComments();
-        this.facesubcomments=new FaceSubComments();
-    }
+    private FaceSubComments facesubcomments;    
     
     public FaceUser getFaceuser() {
         return faceuser;

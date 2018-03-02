@@ -17,9 +17,26 @@ public class FaceUser {
 
     User user = new User();
     User loginOn = new User();
-    User newuser = new User();
+    User new_user = new User();
     UserDAO userdao = new UserDAO();
 
+    public User getLoginOn() {
+        return loginOn;
+    }
+
+    public void setLoginOn(User loginOn) {
+        this.loginOn = loginOn;
+    }
+
+    public User getNew_user() {
+        return new_user;
+    }
+
+    public void setNew_user(User new_user) {
+        this.new_user = new_user;
+    }
+
+    
     public User getUser() {
         return user;
     }
@@ -39,7 +56,7 @@ public class FaceUser {
     @SuppressWarnings("empty-statement")
     public void newUser() {
         try {
-            userdao.newUser(this.newuser);
+            userdao.newUser(this.new_user);
         } catch (SQLException ex) {
             System.out.println("Error al tratar de crear nuevo usuario" + ex.getMessage());
         } finally {
