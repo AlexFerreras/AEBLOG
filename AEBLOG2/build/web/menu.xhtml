@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+    <ui:composition>
+        
+        <h:body>
+            
+            <b:navBar brand="Inicio" brandHref="home.xhtml" inverse="true">
+                <b:navbarLinks>
+                    
+                    <b:navLink value="Nueva Publicacion"  href="newPostView.xhtml">
+                        <b:icon name="plus"/>
+                    </b:navLink>
+                    <b:navLink value="Login" href="login.xhtml"></b:navLink>
+                    <b:navLink value="Registrarme" href="userRegisterView.xhtml"></b:navLink>
+                    <b:navLink value="LogOut"  actionListener="#{faceUser.logOut()}"></b:navLink>
+                    
+                </b:navbarLinks>
+               
+            </b:navBar>
+        
+        </h:body>
+    </ui:composition>
+
+</html>

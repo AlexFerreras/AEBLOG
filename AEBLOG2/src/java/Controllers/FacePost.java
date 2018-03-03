@@ -15,11 +15,11 @@ import javax.inject.Named;
 @Named("facePost")
 public class FacePost  implements Serializable{
 
-    Post post = new Post();
+    Post post= new Post();
     PostDAO postdao = new PostDAO();
     List<Post> allpost = new ArrayList<>();
     
-    FaceUser faceuser;
+
 
     public List<Post> getAllpost() {
         return allpost;
@@ -51,8 +51,7 @@ public class FacePost  implements Serializable{
         try {
             
              //neseito el id del user que la guardo...
-            post.setUser_Id(faceuser.loginOn.getId());
-            
+           // post.setUser_Id(faceuser.loginOn.getId());
             postdao.savePost(this.post);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
