@@ -14,9 +14,9 @@ import java.util.Date;
  */
 public class DBconnection {
 
-    private final String host = "mylogdb.c5zjjkvwngfe.us-east-2.rds.amazonaws.com";
+    private final String host = "localhost";
     private final String user = "admin";
-    private final String password = "admin123456";
+    private final String password = "admin";
     private final String db = "blogdb";
     protected Connection con;
     protected PreparedStatement estado;

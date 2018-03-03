@@ -19,8 +19,6 @@ public class FaceUser {
     User loginOn = new User();
     User new_user = new User();
     UserDAO userdao = new UserDAO();
-FacesContext context = 
-                    FacesContext.getCurrentInstance();
     public User getLoginOn() {
         return loginOn;
     }
@@ -72,8 +70,9 @@ FacesContext context =
             
             if(this.loginOn.getId() > 0 ){
            
-            context.getExternalContext()
-            .getSessionMap().put("userLogOn", this.loginOn);
+                System.out.println(this.loginOn);
+                
+                
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Error al tratar de loguiarse " + ex.getMessage());

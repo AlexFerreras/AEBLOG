@@ -11,13 +11,14 @@ public class UserDAO extends DBconnection{
     {
         try{
     Conectar();
-    sql="insert into user (name, username,las_tname, email, password)"+"values (?, ?, ?, ?, ?)";
+    sql="insert into user (name, username, last_name, email, password, creation_date)"+"values (?, ?, ?, ?, ?, ?)";
     estado= con.prepareStatement(sql);
     estado.setString(1, user.getName());
     estado.setString(2, user.getNickname());
     estado.setString(3, user.getLastname());
     estado.setString(4, user.getEmail());
     estado.setString(5, user.getPassword());
+    estado.setString(6, fecha);
     estado.execute();
     
         }catch(ClassNotFoundException | SQLException e){

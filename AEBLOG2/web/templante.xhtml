@@ -3,14 +3,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 
     <h:head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="style.css" />
         <link type="text/css" rel="stylesheet"
 	href="/WEB-INF/styles/animate.css" />
+        
         <title><ui:insert name="title" /></title>
           
         
@@ -21,7 +23,7 @@
                 <div id="logo"></div>
                 <ui:include src="menu.xhtml"/>
             </div>
-
+            
             <div id="content">
                 <ui:insert name="content">
                     <span>Página en construcción</span>
@@ -29,7 +31,7 @@
             </div>
 
             <div id="footer">
-                <p><a href="#">Eber y Aex Blog!</a></p>
+                <center> <h6 class="animated infinite pulse">Eber y Aex Blog!</h6> </center>    
             </div>
         </div>
     </h:body>

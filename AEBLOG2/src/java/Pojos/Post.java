@@ -57,6 +57,14 @@ public class Post {
         this.user_Id = userId;
     }
 
+    public int getUser_Id() {
+        return user_Id;
+    }
+
+    public void setUser_Id(int user_Id) {
+        this.user_Id = user_Id;
+    }
+
     public String getContent() {
         return content;
     }

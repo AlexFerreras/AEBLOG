@@ -7,14 +7,21 @@
     <ui:composition>
         
         <h:body>
-            <b:navBar brand="Brand" brandHref="#" inverse="true">
+            
+            <b:navBar brand="Inicio" brandHref="home.xhtml" inverse="true">
                 <b:navbarLinks>
-                    <b:navLink value="Home" href="home.xhtml"></b:navLink>
-                    <b:navLink value="login" href="login.xhtml"></b:navLink>
+                    
+                    <b:navLink value="Nueva Publicacion"  href="newPostView.xhtml">
+                        <b:icon name="plus"/>
+                    </b:navLink>
+                    <b:navLink value="Login" href="login.xhtml"></b:navLink>
                     <b:navLink value="Registrarme" href="userRegisterView.xhtml"></b:navLink>
-                    <b:navLink value="Link" href="#"></b:navLink>
+                    <b:navLink value="LogOut"  actionListener="#{faceUser.logOut()}"></b:navLink>
+                    
                 </b:navbarLinks>
+               
             </b:navBar>
+        
         </h:body>
     </ui:composition>
 
