@@ -87,8 +87,11 @@ public class FaceUser {
     public void logOut(){
         //cerrar la sesion activa
         
-    FacesContext.getCurrentInstance()
+    try {
+        FacesContext.getCurrentInstance()
             .getExternalContext().invalidateSession();
-    
+        }catch(Exception e){
+         e.printStackTrace();
+    }
     }
 }

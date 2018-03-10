@@ -11,7 +11,7 @@ public class PostDAO extends DBconnection {
     public void savePost(Post p) throws SQLException {
         try {
             Conectar();
-            sql = "insert into post(userid, topic, content, fecha) values(?,?,?,?)";
+            sql = "insert into post(user_id, topic, content, creation_date) values(?,?,?,?)";
             estado = con.prepareStatement(sql);
 
             estado.setInt(1, p.getUserId());
@@ -20,7 +20,7 @@ public class PostDAO extends DBconnection {
             estado.setString(4, fecha);
             estado.execute();
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e.getMessage());
+          e.printStackTrace();
         } finally {
             
             Desconectar();
@@ -37,7 +37,7 @@ public class PostDAO extends DBconnection {
 
             while (rs.next()) {
 
-                Post p = new Post(rs.getInt("id"), rs.getInt("userid"), rs.getString("topic"), rs.getString("content"), rs.getString("fecha"));
+                Post p = new Post(rs.getInt("id"), rs.getInt("user_id"), rs.getString("topic"), rs.getString("content"), rs.getString("creation_date"));
                 List.add(p);
 
             }
@@ -69,7 +69,7 @@ public class PostDAO extends DBconnection {
      public void updatePost(Post p) throws SQLException {
         try {
             Conectar();
-            sql = "update post set topic=?, content=?, fecha=? ";
+            sql = "update post set topic=?, content=?, creation_date=? ";
             estado = con.prepareStatement(sql);
 
             estado.setString(1, p.getTopic());
@@ -94,7 +94,7 @@ public class PostDAO extends DBconnection {
 
             while (rs.next()) {
 
-                Post p = new Post(rs.getInt("id"), rs.getInt("userid"), rs.getString("topic"), rs.getString("content"), rs.getString("fecha"));
+                Post p = new Post(rs.getInt("id"), rs.getInt("user_id"), rs.getString("topic"), rs.getString("content"), rs.getString("creation_date"));
                 List.add(p);
 
             }

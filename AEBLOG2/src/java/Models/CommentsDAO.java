@@ -14,7 +14,7 @@ public class CommentsDAO extends DBconnection{
      public void saveComment(Comment c) throws SQLException {
         try {
             Conectar();
-            sql = "insert into comment(userid,postid, content, fecha) values(?,?,?,?)";
+            sql = "insert into comments(user_id, post_id, content, creation_date) values(?,?,?,?)";
             estado = con.prepareStatement(sql);
 
             estado.setInt(1, c.getUserId());
@@ -34,14 +34,14 @@ public class CommentsDAO extends DBconnection{
         ArrayList<Comment> List = new ArrayList<>();
         try {
             Conectar();
-            sql = "select * from comments where article_id=? ";
+            sql = "select * from comments where post_id=? ";
             estado = con.prepareStatement(sql);
             estado.setInt(1, post_id);
             rs = estado.executeQuery();
 
             while (rs.next()) {
 
-                Comment Comment = new Comment(rs.getInt("id"), rs.getInt("postid"),rs.getInt("userid"), rs.getString("content"), rs.getString("fecha"));
+                Comment Comment = new Comment(rs.getInt("id"), rs.getInt("post_id"),rs.getInt("user_id"), rs.getString("content"), rs.getString("creation_date"));
                 List.add(Comment);
 
             }
@@ -73,7 +73,7 @@ public class CommentsDAO extends DBconnection{
      public void updateComent(Comment c) throws SQLException {
         try {
             Conectar();
-            sql = "update comment set content=?, fecha=? ";
+            sql = "update comment set content=?, creation_date=? ";
             estado = con.prepareStatement(sql);
 
             estado.setString(2, c.getContent());

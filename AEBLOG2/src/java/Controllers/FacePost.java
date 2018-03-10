@@ -6,18 +6,25 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+
 
 /**
  *
  * @author alexf
  */
-@Named("facePost")
+@ManagedBean(name="facePost")
 public class FacePost  implements Serializable{
 
     Post post= new Post();
     PostDAO postdao = new PostDAO();
     List<Post> allpost = new ArrayList<>();
+
+    public FacePost() throws SQLException {
+        allpost= postdao.findPosts();
+        
+    }
+    
     
 
 
@@ -51,7 +58,7 @@ public class FacePost  implements Serializable{
         try {
             
              //neseito el id del user que la guardo...
-           // post.setUser_Id(faceuser.loginOn.getId());
+        //  post.setUser_Id(faceuser.loginOn.getId());
             postdao.savePost(this.post);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

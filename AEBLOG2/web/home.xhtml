@@ -11,17 +11,55 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
+
     <ui:composition template="templante.xhtml">
-	<ui:define name="title">
-		
-	</ui:define>
-	<ui:define name="content">
-		<h:form>
-			<!-- contenido de la página-->
-                </h:form><h1></h1>
-	</ui:define>
- 
-</ui:composition>
+        <ui:define name="title">
+            Posts	
+        </ui:define>
+        <ui:define name="content">
+
+
+            <b:panelGrid colSpans="9,3">
+
+                <ui:repeat value="#{genFace.facepost.allpost}" var="post">
+
+                    <b:column col-xs="6" col-md="4">
+                        <div>
+                            <b:jumbotron style="border-radius: 12px">
+                                <b:panel title="#{post.topic}" look="primary">
+
+                                    <h:outputLabel value="#{post.content}"/>
+                                    <h:outputLabel value="#{post.fecha}"/>
+                                    
+                                    <b:panel title="Comentarios" look="success" >
+                                        
+                                        <b:form>
+                                        <b:inputText value="#{faceComments.comment.content}"/>
+                                        <b:commandButton icon="arrow-right" action="#{genFace.saveComment(post.id)}"/>
+                                        </b:form>
+                                        #{faceComments.allC(post.id)}
+                                        <ui:repeat value="#{faceComments.allcomments}"  var="comment" >
+                                            
+                                            <h:outputLabel value="#{comment.content}"/>
+
+                                        </ui:repeat>
+                                    </b:panel>
+
+                                </b:panel>
+                            </b:jumbotron>
+                        </div>
+
+                    </b:column>
+
+
+                </ui:repeat>
+
+            </b:panelGrid>
+
+
+
+        </ui:define>
+
+    </ui:composition>
 
 </html>

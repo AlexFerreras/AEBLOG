@@ -19,6 +19,16 @@ public class FaceComments implements Serializable {
     CommentsDAO commentdao = new CommentsDAO();
     List<Comment> allcomments = new ArrayList<>();
 
+    public FaceComments() {
+        
+    }
+
+    public void allC(int post_id) throws SQLException{
+    allcomments=commentdao.findComents(post_id);
+    
+    }
+    
+    
     public List<Comment> getAllcomments() {
         return allcomments;
     }
@@ -43,17 +53,7 @@ public class FaceComments implements Serializable {
         this.commentdao = commentdao;
     }
 
-    public void saveComment() {
-
-        try {
-            commentdao.saveComment(this.comment);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            this.comment = new Comment();
-        }
-
-    }
+  
 
     public void deleteComment() {
         try {

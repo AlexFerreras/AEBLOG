@@ -1,5 +1,7 @@
 package Controllers;
 
+import Pojos.Comment;
+import Pojos.Post;
 import java.io.Serializable;
 import java.sql.SQLException;
 import javax.annotation.PostConstruct;
@@ -16,7 +18,7 @@ import javax.faces.bean.RequestScoped;
 public class GenericFace implements Serializable {
 
     @ManagedProperty(value = "#{faceUser}")
-    private FaceUser faceuser; 
+    private FaceUser faceuser ; 
 
     @ManagedProperty(value = "#{facePost}")
     private FacePost facepost;
@@ -83,4 +85,38 @@ public class GenericFace implements Serializable {
 
     }
 
+        public void savePost() {
+
+        try {
+            
+             //neseito el id del user que la guardo...
+            facepost.post.setUser_Id(faceuser.loginOn.getId());
+            
+            facepost.postdao.savePost(this.facepost.post);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            this.facepost.post = new Post();
+        }
+
+    }
+        
+        
+        
+        
+          public void saveComment(int postId) {
+
+        try {
+            facecomments.comment.setUserId(faceuser.loginOn.getId());
+            facecomments.comment.setPostId(postId);
+            facecomments.commentdao.saveComment(facecomments.comment);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            facecomments.comment = new Comment();
+        }
+
+    }
+        
+        
 }
