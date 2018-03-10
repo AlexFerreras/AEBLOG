@@ -2,6 +2,7 @@ package Controllers;
 
 import Models.UserDAO;
 import Pojos.User;
+import java.io.Serializable;
 import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -13,7 +14,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean(name = "faceUser")
 @SessionScoped
-public class FaceUser {
+public class FaceUser implements Serializable{
  
     User user = new User();
     User loginOn = new User();

@@ -34,7 +34,7 @@ and open the template in the editor.
                                     <b:panel title="Comentarios" look="success" >
                                         
                                         <b:form>
-                                        <b:inputText value="#{faceComments.comment.content}"/>
+                                            <b:inputText value="#{genFace.facecomments.comment.content}"/>
                                         <b:commandButton icon="arrow-right" action="#{genFace.saveComment(post.id)}"/>
                                         </b:form>
                                         #{faceComments.allC(post.id)}

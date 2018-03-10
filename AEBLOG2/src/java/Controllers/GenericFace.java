@@ -102,13 +102,14 @@ public class GenericFace implements Serializable {
     }
         
         
-        
-        
           public void saveComment(int postId) {
 
         try {
             facecomments.comment.setUserId(faceuser.loginOn.getId());
             facecomments.comment.setPostId(postId);
+            
+            System.out.println("Este es e contemifo"+facecomments.comment.getContent());
+            
             facecomments.commentdao.saveComment(facecomments.comment);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -24,7 +24,7 @@ public class FaceComments implements Serializable {
     }
 
     public void allC(int post_id) throws SQLException{
-    allcomments=commentdao.findComents(post_id);
+    allcomments = commentdao.findComents(post_id);
     
     }
     
