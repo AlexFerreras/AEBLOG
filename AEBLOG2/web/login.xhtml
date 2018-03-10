@@ -9,38 +9,40 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"     
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 
-      <ui:composition template="templante.xhtml">
+    <ui:composition template="templante.xhtml">
         <ui:define name="title">
-    
+
         </ui:define>
         <ui:define name="content">
-            
+
             <h:form>
-                
+
                 <b:container>
-                    
+                    <p:growl id="gowl" sticky="true" showDetail="true"/>
                     <h:form styleClass="form-signin" prependId="false">
+                        
                         <h2 class="form-signin-heading">Ingrese aqui!</h2>
-                        
-                         <b:row>
-                        <b:inputText id="email" span="6" value="#{faceUser.user.email}"  placeholder="Email address" >
-                            <f:facet name="prepend">
-                                <b:icon name="user" />
-                            </f:facet>
-                        </b:inputText>
-                        </b:row>
-                        
+
                         <b:row>
-                        <b:inputText id="password" span="6" value="#{faceUser.user.password}" placeholder="Password" type="password">
-                            <f:facet name="prepend">
-                                <b:iconAwesome name="key" />
-                            </f:facet>
-                        </b:inputText>
+                            <b:inputText id="email" span="6" value="#{faceUser.user.email}"  placeholder="Email address" >
+                                <f:facet name="prepend">
+                                    <b:icon name="user" />
+                                </f:facet>
+                            </b:inputText>
                         </b:row>
-                        
+
+                        <b:row>
+                            <b:inputText id="password" span="6" value="#{faceUser.user.password}" placeholder="Password" type="password">
+                                <f:facet name="prepend">
+                                    <b:iconAwesome name="key" />
+                                </f:facet>
+                            </b:inputText>
+                        </b:row>
+
                         <b:selectBooleanCheckbox value="true" caption="remember me"/>
                         
                         <b:commandButton look="primary btn-block" span="3" value="Sign In" icon="log-in" size="lg" action="#{faceUser.login()}" />

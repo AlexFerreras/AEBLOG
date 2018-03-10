@@ -4,9 +4,11 @@ import Models.UserDAO;
 import Pojos.User;
 import java.io.Serializable;
 import java.sql.SQLException;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -64,23 +66,25 @@ public class FaceUser implements Serializable{
         }
     }
 
-    public void login() {
+    public String login() throws ClassNotFoundException, SQLException {
 
-        try {
+    
             this.loginOn = userdao.Login(this.user);
             
             if(this.loginOn.getId() > 0 ){
            
-                System.out.println(this.loginOn);
+                return "home";
                 
                 
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("Error al tratar de loguiarse " + ex.getMessage());
-        } finally {
-
-            //lo que queremos que haga despues que se loguee
-        }
+            else {
+               RequestContext.getCurrentInstance().update("groul");
+               FacesContext context = FacesContext.getCurrentInstance();
+               context.addMessage(this.loginOn.getEmail(), new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Nombre De Usuario O Passwor Incorecto"));
+               return "";
+              }
+       
+        
 
     }
     

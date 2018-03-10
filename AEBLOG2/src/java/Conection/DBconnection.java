@@ -15,8 +15,8 @@ import java.util.Date;
 public class DBconnection {
 
     private final String host = "localhost";
-    private final String user = "admin";
-    private final String password = "admin";
+    private final String user = "root";
+    private final String password = "123456";
     private final String db = "blogdb";
     protected Connection con;
     protected PreparedStatement estado;
